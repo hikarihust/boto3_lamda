@@ -1,0 +1,10 @@
+Boto3
+    IAM - > Add user 
+        boto3-demo
+        Access type: Programmatic access
+        Enables an access key ID and secret access key for the AWS API, CLI, SDK, and other development tools.
+        Attach existing policies directly
+            AdministratorAccess
+    aws cli(Using Python and pip on Windows)
+        pip install awscli
+        aws configure
