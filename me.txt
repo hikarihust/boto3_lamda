@@ -8,3 +8,7 @@ Boto3
     aws cli(Using Python and pip on Windows)
         pip install awscli
         aws configure
+
+Create EC2 Instances
+    boto3 ec2 instance
+    ami-0e38b48473ea57778
