@@ -12,3 +12,5 @@ Boto3
 Create EC2 Instances
     boto3 ec2 instance
     ami-0e38b48473ea57778
+
+Launching EC2 Instances
