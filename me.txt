@@ -14,3 +14,7 @@ Create EC2 Instances
     ami-0e38b48473ea57778
 
 Launching EC2 Instances
+
+Operations on EC2 (Start, Stop, Terminate)
+    boto3 ec2 instance
+    start_instances()
