@@ -18,3 +18,5 @@ Launching EC2 Instances
 Operations on EC2 (Start, Stop, Terminate)
     boto3 ec2 instance
     start_instances()
+
+Describing EC2 Instances
