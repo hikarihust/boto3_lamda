@@ -43,3 +43,5 @@ Taking EBS Snapshots & Send Email
             Protocol: Email
             Endpoint: xxxxx.gmail.com
             Comfirm mail
+
+Deleting EBS Snapshots, older than N days
