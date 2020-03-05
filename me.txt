@@ -45,3 +45,5 @@ Taking EBS Snapshots & Send Email
             Comfirm mail
 
 Deleting EBS Snapshots, older than N days
+
+Migrating AMIs To  different regions using Boto3 Waiters
