@@ -67,3 +67,19 @@ AWS Lambda - Performance Tuning, Managing Memory, CPU & running Lambda in VPC
         TimeoutInfo: 5 minute, 0 second
     Memory (MB): 128MB
     VPC
+
+AWS Lambda - Managing Lambda Versions
+    LambdaVersionsingDemo - Save 
+    CloudWatch - Rules - Create rule
+    Step 1: Create rule
+        Schedule: Fixed rate of 1 minute
+        Add target
+            Lambda function
+            Function: LambdaVersionsingDemo
+    Step 2: Configure rule details
+    Logs
+
+    Lambda
+        Publish new version: RELEASE-1
+    CloudWatch - Edit
+        Configure version/alias - Versions 1
