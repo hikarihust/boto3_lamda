@@ -83,3 +83,15 @@ AWS Lambda - Managing Lambda Versions
         Publish new version: RELEASE-1
     CloudWatch - Edit
         Configure version/alias - Versions 1
+
+AWS Lambda - Managing Aliases
+    Lamda
+        Publish Versions 2
+        Actions: Create alias
+        Name: Prod 
+        Desciption: Production Env
+        Version: 1
+    CloudWatch
+        Edit VersionsingDemo
+        Alias: Prod
+    Có thể sửa alias từ version 1 sang version 2
