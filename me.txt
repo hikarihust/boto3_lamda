@@ -47,3 +47,17 @@ Taking EBS Snapshots & Send Email
 Deleting EBS Snapshots, older than N days
 
 Migrating AMIs To  different regions using Boto3 Waiters
+
+Demo - Create Lambda Function
+    Services - Lamda - Create function - Author from scratch
+    Function name
+    Runtime: Python
+    Choose or create an execution role: Create a new role with basic Lambda permissions
+    Create function
+    Test
+    Event name: helloworld
+    Create
+    configure test event
+        {
+            "name": "quang"
+        }
