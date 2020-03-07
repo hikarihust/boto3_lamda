@@ -95,3 +95,49 @@ AWS Lambda - Managing Aliases
         Edit VersionsingDemo
         Alias: Prod
     Có thể sửa alias từ version 1 sang version 2
+
+Lambda, Create Deployment Package And Send Slack Notifications
+    https://docs.aws.amazon.com/lambda/latest/dg/python-package.html
+    https://slack.com/signin
+    Create a new workspace
+    Enter Email
+    Company name: Hust 
+    Team name: Software Engineer
+    Who do you email most about this project?
+        my mail
+    Add More App - Incoming WebHooks - Add to Slack - Choose a channel
+    Webhook URL: https://hooks.slack.com/services/.....
+    
+    EC2: Lauch SlackDemo Instances
+
+    Create a deployment package with virtualenv
+        virtualenv v-env
+    .\v-env\Scripts\activate 
+        result: 
+            v-env
+                Include
+                Lib
+                Scripts
+                tcl
+    pip install requests
+        Check in Lib\site-packages -> requests được thêm vào
+    v-env\Lib\site-packages
+        Thêm slackAlert.py(function send_lack)
+    -> zip toàn bộ nội dung có ở trong thư mục v-env\Lib\site-packages -> thu được slack.zip
+    
+    Lambda
+        Name: slackAlert
+        Upload a zip filter
+        HandlerInfo: slackAlert.send_lack
+
+    CloudWatch - Rules - Create rule - Event Pattern
+        Step 1: Create rule
+            Service Name: EC2
+            Event Type: EC2 Instance State-change Notification
+            Specific state(s): stopped
+            Specific instance Id(s): id of EC2
+
+            Targets - Lamda function
+                Function: slackAlert
+        Step 2: Configure rule details
+            Name: slackAlert
