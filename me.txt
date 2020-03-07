@@ -145,3 +145,23 @@ Lambda, Create Deployment Package And Send Slack Notifications
 AWS Lambda - Passing Environment Variables To Lambda Function Using python
     Lamda - Upload zip file - Save
     Environment variables - SLACK_WEBHOOK(Key, Value)
+
+AWS Lambda - Encrypting Sensitive Data In Environment Variables
+    boto3 kms
+    https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kms.html#KMS.Client.decrypt
+    https://docs.aws.amazon.com/kms/latest/APIReference/API_Decrypt.html
+    create aws kms key
+        https://console.aws.amazon.com/kms
+        Alias: slack-demo
+        Description - optional: slack-demo
+        Create key
+        Define key administrative permissions: next(everybody)
+        Define key usage permissions
+            slackAlert-role-22pnk3xs(name: slackAlert-role-22pnk3xs)
+    boto3 kms
+    Lambda - Functions - slackAlert
+        Environment variables - Encryption configuration
+            Enable helpers for encryption in transit
+            Use a customer master key
+        Customer master key(slack-demo)
+        Encryption in transit
