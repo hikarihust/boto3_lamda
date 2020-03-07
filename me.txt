@@ -141,3 +141,7 @@ Lambda, Create Deployment Package And Send Slack Notifications
                 Function: slackAlert
         Step 2: Configure rule details
             Name: slackAlert
+
+AWS Lambda - Passing Environment Variables To Lambda Function Using python
+    Lamda - Upload zip file - Save
+    Environment variables - SLACK_WEBHOOK(Key, Value)
