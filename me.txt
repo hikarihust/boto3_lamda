@@ -97,6 +97,7 @@ AWS Lambda - Managing Aliases
     Có thể sửa alias từ version 1 sang version 2
 
 Lambda, Create Deployment Package And Send Slack Notifications
+    Services - Key Management Service (KMS)
     https://docs.aws.amazon.com/lambda/latest/dg/python-package.html
     https://slack.com/signin
     Create a new workspace
@@ -165,3 +166,49 @@ AWS Lambda - Encrypting Sensitive Data In Environment Variables
             Use a customer master key
         Customer master key(slack-demo)
         Encryption in transit
+
+When JSON File Uploaded to S3, Automatically Process File And Put It it in DynamoDB
+    Services DynamoDB - Create table
+        Table name: employees
+        Primary key: emp_id
+    Services S3 - Create bucket
+        bucket: employees-json
+    Services IAM - Policies - Create policy
+        Choose a service: CloudWatch Logs
+        Actions: All CloudWatch Logs action
+        Resources: All resources
+        Add additional permissions
+            Choose services: S3
+            Action: All S3 actions
+            Resources: All resources
+        Add additional permissions
+            Choose services: dynamoDB
+            Action: All DynamoDB actions (dynamodb:*)
+        There are action in your policy that support the stream resources type: All resources
+        Review policy
+            Name: s3_json_dynamodb
+    Services IAM - Roles - Create role
+        AWS services - Lamda
+        s3_json_dynamodb
+        Role name: s3_json_dynamodb
+        Role Desciption: Allows Lamda functions to all AWS services on your behalf
+    Lamda
+        Name: s3_json_dynamodb
+        Role - Use an existing role: s3_json_dynamodb
+        s3_json_dynamodb.py
+            print(str(event))
+        Add Trigger
+            S3
+            bucket: employees-json
+            Event type: All object create events
+            Suffix: .json
+    S3 
+        employees-json: Upload data.json 
+    CloudWatch - Logs - Group logs
+        http://jsonviewer.stack.hu/
+        bucket: employees-json
+        key: data.json
+    boto3 s3 documentation
+        https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html
+    boto dynamodb
+        https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html
