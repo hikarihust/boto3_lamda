@@ -263,3 +263,37 @@ Read CSV from S3 and Persist to DynamoDB
         4,Pavithra,Banglore
         5,Ravi,Pune
         6,Raghu,Delhi
+
+AWS Lambda - Run EC2 Instances In Schedules
+    Requirement:
+        Schedule ec2 instances, start instance at 9AM and stop them at 6 PM.
+        Condition: Instances with tag key="Type" and Value="Scheduled"
+        Condition: Mod-Friday
+    1. IAM Role for the lambda -> EC2 instance, AWS CloudWatch Logs
+        IAM - Policies - Create policy
+            EC2: StartInstances, StopInstances
+            Policies name: start_stop_ec2_instances
+        IAM - Roles - Create role(AWS service) - Lambda
+            Permissions policies: start_stop_ec2_instances
+            Role name: Role start_stop_ec2_instances_role
+        Policies - start_stop_ec2_instances - Edit policy
+            Add additional permissions - CloudWatch Logs - All CloudWatch Logs actions (logs:*)
+    2. Create Lamda function
+        Lambda - Create function(Author from scratch)
+        Function name: schedule_ec2_instances
+        Use an existing role: start_stop_ec2_instances_role
+    boto3 ec2 filter
+    Test(Create)
+        Event name: scheduledtestdata
+        "errorMessage": "An error occurred (UnauthorizedOperation) when calling the DescribeInstances operation: You are not 
+            authorized to perform this operation.",
+        -> IAM - Policies - start_stop_ec2_instances - Edit policy - EC2 - Actions
+            Thêm DescribeInstances  
+    3. Schedule this lambda function
+        CloudWatch - Events - Rules - Create rule - Schedule
+            Cron expression: 0 9 ? * MON-FRI *
+            JST to GMT
+        Target - Lambda function
+            Function: schedule_ec2_instances
+        Configure rule details
+            Name: schedule_ec2_instances
