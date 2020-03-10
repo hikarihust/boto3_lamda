@@ -297,3 +297,6 @@ AWS Lambda - Run EC2 Instances In Schedules
             Function: schedule_ec2_instances
         Configure rule details
             Name: schedule_ec2_instances
+
+Realtime Use Case - Remove Unused AMIs
+    
