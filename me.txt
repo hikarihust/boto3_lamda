@@ -341,3 +341,5 @@ AWS Lambda, Send Email Notifications When EC2 Instance Stop
 
 Dynamo DB, Put Item
     boto3 dynamodb
+
+DynamoDB Get and Delete Item
