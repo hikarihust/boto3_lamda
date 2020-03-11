@@ -300,3 +300,41 @@ AWS Lambda - Run EC2 Instances In Schedules
 
 Realtime Use Case - Remove Unused AMIs
     
+AWS Lambda, Send Email Notifications When EC2 Instance Stop
+    1. EC2
+    2. SNS Topic 
+        sns(Amazon SNS)
+        Create topic
+            Name: prod-alerts
+            Display name: prodalert
+        Create subscription
+            Protocol: Email
+            Endpoint: ...@gmail
+        Confirm subscription
+    3. IAM Role for Lambda to access SNS topic and CloudWatch Logs
+        IAM - Policies - Create Policy
+            Services: SNS
+                Resources: All resources
+            Services: CloudWatch Logs
+                Action: All CloudWatch Logs actions (logs:*)
+                Resources: All resources
+            Name: sns_cloudwatch_logs_prod_alerts
+        IAM - Roles - Create role - AWS service - Lambda
+            sns_cloudwatch_logs_prod_alerts
+            Role name: sns_cloudwatch_logs_prod_alerts
+    4. Lambda(python) 
+        Lambda - Create function - Author from scratch
+            name: prod_alerts
+            Use an existing role: sns_cloudwatch_logs_prod_alerts
+        boto3 sns
+    5. CloudWatch Events - to schedule 
+        Add trigger
+        Select a trigger: CloudWatch Events
+        Rule: Create a new rule
+        Rule name: prod_alerts
+        Rule type: Event pattern
+        Auto Scaling: EC2
+        Events: EC2 instance state-change notification
+        Detail: 
+            State: stopped
+            Instances - Add Instance ID
