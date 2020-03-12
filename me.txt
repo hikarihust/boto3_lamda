@@ -343,3 +343,5 @@ Dynamo DB, Put Item
     boto3 dynamodb
 
 DynamoDB Get and Delete Item
+
+Create S3 Bucket
