@@ -345,3 +345,5 @@ Dynamo DB, Put Item
 DynamoDB Get and Delete Item
 
 Create S3 Bucket
+
+Upload File to S3 Bucket
