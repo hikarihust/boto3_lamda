@@ -351,3 +351,5 @@ Upload File to S3 Bucket
 Delete Objects From S3
 
 List Objects From S3
+
+List All S3 Buckets
